@@ -4,34 +4,34 @@ function gz_customize_register($wp_customize) {
 
 	/***** Register Custom Controls *****/
 
-    class MH_Customize_Header_Control extends WP_Customize_Control {
+    class gz_Customize_Header_Control extends WP_Customize_Control {
         public function render_content() { ?>
 			<span class="customize-control-title"><?php echo esc_html($this->label); ?></span> <?php
         }
     }
 
-	class MH_Customize_Text_Control extends WP_Customize_Control {
+	class gz_Customize_Text_Control extends WP_Customize_Control {
         public function render_content() { ?>
 			<span class="textfield"><?php echo esc_html($this->label); ?></span> <?php
         }
     }
 
-    class MH_Customize_Button_Control extends WP_Customize_Control {
+    class gz_Customize_Button_Control extends WP_Customize_Control {
         public function render_content() {  ?>
 			<p>
-				<a href="<?php echo esc_url('http://www.mhthemes.com/themes/mh/newsdesk/'); ?>" target="_blank" class="button button-secondary"><?php echo esc_html($this->label); ?></a>
+				<a href="<?php echo esc_url('http://google.com'); ?>" target="_blank" class="button button-secondary"><?php echo esc_html($this->label); ?></a>
 			</p> <?php
         }
     }
 
 	/***** Add Panels *****/
 
-	$wp_customize->add_panel('mh_theme_options', array('title' => __('Theme Options', 'gz'), 'description' => '', 'capability' => 'edit_theme_options', 'theme_supports' => '', 'priority' => 1,));
+	$wp_customize->add_panel('gz_theme_options', array('title' => __('Theme Options', 'gz'), 'description' => '', 'capability' => 'edit_theme_options', 'theme_supports' => '', 'priority' => 1,));
 
 	/***** Add Sections *****/
 
-	$wp_customize->add_section('mh_general', array('title' => __('General', 'gz'), 'priority' => 1, 'panel' => 'mh_theme_options'));
-	$wp_customize->add_section('mh_upgrade', array('title' => __('Upgrade to Premium', 'gz'), 'priority' => 2, 'panel' => 'mh_theme_options'));
+	$wp_customize->add_section('gz_general', array('title' => __('General', 'gz'), 'priority' => 1, 'panel' => 'gz_theme_options'));
+	$wp_customize->add_section('gz_upgrade', array('title' => __('Upgrade to Premium', 'gz'), 'priority' => 2, 'panel' => 'gz_theme_options'));
 
     /***** Add Settings *****/
 
@@ -44,11 +44,11 @@ function gz_customize_register($wp_customize) {
 
     /***** Add Controls *****/
 
-    $wp_customize->add_control('excerpt_length', array('label' => __('Custom Excerpt Length in Words', 'gz'), 'section' => 'mh_general', 'settings' => 'gz_options[excerpt_length]', 'priority' => 1, 'type' => 'text'));
-    $wp_customize->add_control('excerpt_more', array('label' => __('Custom Excerpt More-Text', 'gz'), 'section' => 'mh_general', 'settings' => 'gz_options[excerpt_more]', 'priority' => 2, 'type' => 'text'));
-	$wp_customize->add_control('sidebar', array('label' => __('Sidebar', 'gz'), 'section' => 'mh_general', 'settings' => 'gz_options[sidebar]', 'priority' => 3, 'type' => 'select', 'choices' => array('right' => __('Right Sidebar', 'gz'), 'left' => __('Left Sidebar', 'gz'))));
-	$wp_customize->add_control(new MH_Customize_Header_Control($wp_customize, 'premium_version_label', array('label' => __('Need more features and options?', 'gz'), 'section' => 'mh_upgrade', 'settings' => 'gz_options[premium_version_label]', 'priority' => 1)));
-	$wp_customize->add_control(new MH_Customize_Text_Control($wp_customize, 'premium_version_text', array('label' => __('Check out the premium version of this theme which comes with more features, additional widgets and advanced customization options for your website.', 'gz'), 'section' => 'mh_upgrade', 'settings' => 'gz_options[premium_version_text]', 'priority' => 2)));
+    $wp_customize->add_control('excerpt_length', array('label' => __('Custom Excerpt Length in Words', 'gz'), 'section' => 'gz_general', 'settings' => 'gz_options[excerpt_length]', 'priority' => 1, 'type' => 'text'));
+    $wp_customize->add_control('excerpt_more', array('label' => __('Custom Excerpt More-Text', 'gz'), 'section' => 'gz_general', 'settings' => 'gz_options[excerpt_more]', 'priority' => 2, 'type' => 'text'));
+	$wp_customize->add_control('sidebar', array('label' => __('Sidebar', 'gz'), 'section' => 'gz_general', 'settings' => 'gz_options[sidebar]', 'priority' => 3, 'type' => 'select', 'choices' => array('right' => __('Right Sidebar', 'gz'), 'left' => __('Left Sidebar', 'gz'))));
+	$wp_customize->add_control(new gz_Customize_Header_Control($wp_customize, 'premium_version_label', array('label' => __('Need more features and options?', 'gz'), 'section' => 'gz_upgrade', 'settings' => 'gz_options[premium_version_label]', 'priority' => 1)));
+	$wp_customize->add_control(new gz_Customize_Text_Control($wp_customize, 'premium_version_text', array('label' => __('Check out the premium version of this theme which comes with more features, additional widgets and advanced customization options for your website.', 'gz'), 'section' => 'gz_upgrade', 'settings' => 'gz_options[premium_version_text]', 'priority' => 2)));
 	
 }
 add_action('customize_register', 'gz_customize_register');
