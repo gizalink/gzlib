@@ -18,7 +18,7 @@ if (!function_exists('get_theme_options_gz')) {
 ```
 
 - To display front-end 
-- 
+
 ```
 <?php 
 		$get_options_gz = get_theme_options_gz(); 
