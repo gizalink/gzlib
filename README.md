@@ -6,4 +6,13 @@ Library Wordpress Theme by GiaLinh (gizalink)
 ```
 require_once('gzlib/gz_option_extra.php');
 
+if (!function_exists('get_theme_options_gz')) {
+	function get_theme_options_gz() {
+		$theme_options = wp_parse_args(
+			get_option('gz_theme_options', array()),
+			gz_theme_options()
+		);
+		return $theme_options;
+	}
+}
 ```
